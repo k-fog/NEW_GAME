@@ -89,7 +89,7 @@ function createBlock(y) {
       900,
     y,
     vx:
-      -2,
+      -3,
     vy:
       0,
   };
