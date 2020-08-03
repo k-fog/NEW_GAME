@@ -1,6 +1,6 @@
+// 以下のサイトを大いに参考にしました。
 /**
  * @preserve Credits
- * 
  * "p5.js でゲーム制作" ( https://fal-works.github.io/make-games-with-p5js/ )
  * Copyright (c) 2020 FAL
  * Used under the MIT License
