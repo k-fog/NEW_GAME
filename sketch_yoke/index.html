@@ -2,7 +2,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
   <script language="javascript" type="text/javascript"
@@ -25,9 +26,8 @@
     }
   </style>
   <script>
-    window.addEventListener('touchmove', event => {
-      event.preventDefault();
-    }, true);
+    window.addEventListener("touchstart", function (event) { event.preventDefault(); }, { passive: false });
+    window.addEventListener("touchmove", function (event) { event.preventDefault(); }, { passive: false });
   </script>
 </head>
 
