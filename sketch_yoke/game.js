@@ -266,7 +266,7 @@ class Particle extends Entity {
   }
 
   display() {
-    stroke(10);
+    stroke(10, 255 * this.life);
     fill(10, 255 * this.life);
     push();
     translate(this.pos.x, this.pos.y);
