@@ -2,7 +2,7 @@ function resetGame() {
   gameState = "playing"
   bgm.setVolume(0.2);
   bgm.loop();
-  frameCnt = 0;
+  point = 0;
   onMountain = false;
   player = new Player();
   ground = [];
@@ -23,7 +23,6 @@ function updateGame() {
   particles.forEach(x => x.update());
   player.update();
   if (input.isJustPressed() && onMountain) onMountain = false;
-  frameCnt++;
 }
 
 function drawGame() {
@@ -32,7 +31,7 @@ function drawGame() {
   player.display();
   textSize(12);
   fill(0);
-  text((frameCnt / 60).toFixed(2), 30, 20);
+  text(point, 30, 20);
   if (gameState === "gameover") drawGameoverScreen();
 }
 
@@ -125,6 +124,7 @@ class Player extends Entity {
           this.y = mountain.y - 220;
           if (onMountain == true) break;
           se_te.play();
+          point++;
           onMountain = true;
           mountain.flag = false;
         }
@@ -178,5 +178,5 @@ function drawGameoverScreen() {
   textSize(64);
   text("GAME OVER", width / 2, height / 2);
   textSize(24);
-  text("time:" + (frameCnt / 60).toFixed(2), width / 2, height / 2 + 100);
+  text("point:" + point, width / 2, height / 2 + 100);
 }
