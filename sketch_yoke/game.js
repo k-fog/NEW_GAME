@@ -286,7 +286,7 @@ function drawOpeningScreen() {
   textSize(20);
   text("rpc shooting", width / 2, height / 2);
   textSize(10);
-  text("press any key.", width / 2, height / 2 + 80);
+  text("press arrow key.", width / 2, height / 2 + 80);
   if (input.isJustPressed()) resetGame();
 }
 
