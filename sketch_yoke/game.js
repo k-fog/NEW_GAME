@@ -103,7 +103,7 @@ class Enemy extends Entity {
   constructor(x) {
     super(x, 0, 0, 1);
     this.life = 3;
-    this.danmaku = floor(random(6));
+    this.danmaku = floor(random(7));
   }
 
   isAlive() {
@@ -137,6 +137,9 @@ class Enemy extends Entity {
       case 5:
         Danmaku.d02(this.pos);
         break;
+      case 6:
+        Danmaku.d03(this.pos);
+        break;
     }
 
     for (let i of entities) {
@@ -149,7 +152,7 @@ class Enemy extends Entity {
     }
 
     this.pos.add(this.vel);
-    if (this.pos.y < 0) gameover();
+    if (this.pos.y > height) gameover();
   }
 
   display() {
@@ -237,6 +240,17 @@ class Danmaku {
         if (i % 60 === 0) b.angle_speed = 0.01;
         else b.angle_speed = -0.01;
         entities.push(b);
+      }
+    }
+  }
+  
+  static d03(pos) {
+    if (frameCount % 80 === 0) {
+      for (let i = 0; i < 360; i += 30) {
+        let angle = radians(i);
+        for (let j = -1; j <= 1; j++) {
+          entities.push(new Bullet("enemy", pos.x + j * 18 + cos(angle), pos.y + sin(angle), 6, angle, color(250)));
+        }
       }
     }
   }
