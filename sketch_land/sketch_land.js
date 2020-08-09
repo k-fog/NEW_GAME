@@ -5,7 +5,7 @@ let gameState;
 let player;
 let ground;
 let particles;
-let frameCnt;
+let point;
 let onMountain;
 let se_jump, se_te, se_gameover, bgm;
 
