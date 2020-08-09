@@ -62,9 +62,7 @@ class Player extends Entity {
     let spd = 4;
     switch (device.value()) {
       case "mobile":
-        let temp = createVector(input.diff().x, input.diff().y);
-        temp.normalize();
-        this.vel = temp.mult(spd);
+        this.vel = createVector(input.diff().x, input.diff().y);
         break;
       case "PC":
         this.vel.x = input.keyArrow().left * spd + input.keyArrow().right * spd;
