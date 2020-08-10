@@ -73,7 +73,7 @@ class Player extends Entity {
     push();
     translate(this.pos.x, this.pos.y);
     rotate(this.angle);
-    rect(0, 0, this.w, this.h);
+    rect(0, 0, this.w, this.h, 3);
     pop();
   }
 }
@@ -105,7 +105,7 @@ class Enemy extends Entity {
   display() {
     stroke(250, 50, 50);
     fill(250, 50, 50);
-    rect(this.pos.x, this.pos.y, 20, 20);
+    rect(this.pos.x, this.pos.y, 20, 20, 8);
   }
 }
 
