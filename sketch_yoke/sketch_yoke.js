@@ -39,8 +39,7 @@ function draw() {
     updateGame();
     drawGame();
     frameCnt++;
-  }
-  if (gameState == "gameover") {
+  } else if (gameState == "gameover") {
     if (gameoverCnt > 30) setShake(0);
     if (gameoverCnt > 40 && input.isJustPressed()) resetGame();
     gameoverCnt++;
