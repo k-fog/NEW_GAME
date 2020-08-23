@@ -20,18 +20,20 @@ function setup() {
   createCanvas(800, 600);
   rectMode(CENTER);
   textAlign(CENTER, CENTER);
-  userStartAudio();
 
   input = new Input();
-  resetGame();
+  gameState = "opening";
 }
 
 
 function draw() {
   background(250);
   input.update();
-  updateGame();
-  drawGame();
+  if (gameState === "opening") drawOpeningScreen();
+  else {
+    updateGame();
+    drawGame();
+  }
 }
 
 class Input {

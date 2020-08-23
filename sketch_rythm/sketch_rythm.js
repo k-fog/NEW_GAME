@@ -6,20 +6,17 @@ let entities;
 let entities_2;
 let frameCnt;
 let gameoverCnt;
-let point;
-let se_bomb, se_gameover, bgm;
+let shakeMagnitude;
+let shakeDampingFactor;
+let se_shot, se_gameover, bgm;
 
 function preload() {
-  se_bomb = loadSound("./data/se_bomb.mp3");
-  se_gameover = loadSound("./data/se_gameover.mp3");
-  bgm = loadSound("./data/bgm.mp3");
 }
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(800, 600);
   rectMode(CENTER);
   textAlign(CENTER, CENTER);
-
   input = new Input();
   gameState = "opening"
 }
@@ -35,6 +32,7 @@ function draw() {
     drawGame();
     frameCnt++;
   } else if (gameState == "gameover") {
+    setShake(0);
     if (gameoverCnt > 40 && input.isJustPressed()) resetGame();
     gameoverCnt++;
     drawGame();
@@ -64,10 +62,6 @@ class Input {
 
   isReleased() {
     return this.prev == true && this.current == false;
-  }
-
-  pos() {
-    return { x: mouseX, y: mouseY };
   }
 
   diff() {

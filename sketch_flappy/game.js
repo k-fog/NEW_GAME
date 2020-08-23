@@ -3,12 +3,13 @@ function resetGame() {
   player = createPlayer();
   blocks = [];
   frameCnt = 0;
+  userStartAudio();
   bgm.setVolume(0.2);
   bgm.loop();
 }
 
 function updateGame() {
-  if (gameState === "gameover") return;
+  if (gameState === "gameover" || gameState === "opening") return;
   if (frameCount % 120 === 1) addBlockPair(blocks);
   blocks = blocks.filter(blockIsAlive);
   updatePosition(player);
@@ -40,6 +41,9 @@ function onInput() {
     case "play":
       applyJump(player);
       se_jump.play();
+      break;
+    case "opening":
+      resetGame();
       break;
     case "gameover":
       resetGame();
@@ -137,4 +141,13 @@ function drawGameoverScreen() {
   text("GAME OVER", width / 2, height / 2);
   textSize(24);
   text("time:" + (frameCnt / 60).toFixed(2), width / 2, height / 2 + 100);
+}
+
+function drawOpeningScreen() {
+  background(250);
+  fill(0);
+  textSize(20);
+  text("rpc flappy_box", width / 2, height / 2);
+  textSize(10);
+  text("press any key.", width / 2, height / 2 + 80);
 }

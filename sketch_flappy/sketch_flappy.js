@@ -25,12 +25,15 @@ function setup() {
   textAlign(CENTER, CENTER);
   userStartAudio();
 
-  resetGame();
+  gameState = "opening";
 }
 
 function draw() {
-  updateGame();
-  drawGame();
+  if (gameState === "opening") drawOpeningScreen();
+  else {
+    updateGame();
+    drawGame();
+  }
 }
 
 function mousePressed() {
@@ -38,5 +41,9 @@ function mousePressed() {
 }
 
 function keyPressed() {
+  onInput();
+}
+
+function touchStarted() {
   onInput();
 }
