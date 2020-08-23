@@ -1,5 +1,6 @@
 function resetGame() {
   gameState = "playing"
+  userStartAudio();
   bgm.setVolume(0.2);
   bgm.loop();
   point = 0;
@@ -179,4 +180,14 @@ function drawGameoverScreen() {
   text("GAME OVER", width / 2, height / 2);
   textSize(24);
   text("point:" + point, width / 2, height / 2 + 100);
+}
+
+function drawOpeningScreen() {
+  background(250);
+  fill(0);
+  textSize(20);
+  text("rpc landing", width / 2, height / 2);
+  textSize(10);
+  text("press any key.", width / 2, height / 2 + 80);
+  if (input.isJustPressed()) resetGame();
 }
